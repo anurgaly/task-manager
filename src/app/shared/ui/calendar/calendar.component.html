@@ -1,0 +1,6 @@
+<mat-card class="calendar-card">
+  <mat-calendar
+    [(selected)]="selectedDate"
+    (selectedChange)="selectedDateChanged($event)"
+  ></mat-calendar>
+</mat-card>

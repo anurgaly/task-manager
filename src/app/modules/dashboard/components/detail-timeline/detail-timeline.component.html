@@ -1,0 +1,31 @@
+<div class="timeline">
+  <div
+    cdkDropList
+    [cdkDropListData]="timeLine"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for (range of timeLine; track range) {
+    <div class="timeline--event">
+      <strong>{{ range | timeTransform }}</strong>
+      <div cdkDrag class="timeline--event--content">
+        <ng-container *ngIf="getEventByHour($index)?.event as data">
+          <div class="event">
+            <strong>{{ data?.title }}</strong
+            ><br />
+            <span>{{ data?.description }}</span>
+          </div>
+
+          <div class="tools">
+            <button mat-icon-button (click)="editEvent($index)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeEvent($index)">
+              <mat-icon>highlight_off</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    }
+  </div>
+</div>

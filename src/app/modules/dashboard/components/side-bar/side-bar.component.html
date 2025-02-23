@@ -1,0 +1,11 @@
+<div class="side-bar">
+  <app-calendar></app-calendar>
+  <section *ngIf="$selectedDate | async as selectedDate">
+    <ng-container *ngIf="$allEvents | async as data">
+      <span
+        >Number of Events for selected day:
+        <strong>{{ getNumberOfEvents(data, selectedDate) }}</strong></span
+      >
+    </ng-container>
+  </section>
+</div>

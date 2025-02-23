@@ -1,0 +1,67 @@
+<ng-container [formGroup]="form" class="dialog">
+  <mat-dialog-content class="dialog-content">
+    <strong>Add / Edit event</strong>
+
+    <mat-form-field>
+      <mat-label>Event title</mat-label>
+      <input matInput [formControl]="form.controls.title" />
+      @if (form.controls.title.invalid && form.controls.title.dirty) {
+      <mat-error>
+        {{ getErrorMessage(form.controls.title.errors) }}
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Meeting date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datepicker"
+        [formControl]="form.controls.date"
+      />
+      <mat-datepicker #datepicker />
+      <mat-datepicker-toggle [for]="datepicker" matSuffix />
+      @if (form.controls.date.invalid && form.controls.date.dirty) {
+      <mat-error>
+        {{ getErrorMessage(form.controls.date.errors) }}
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Meeting time</mat-label>
+      <input
+        matInput
+        [matTimepicker]="timepicker"
+        [formControl]="form.controls.hour"
+      />
+      <mat-timepicker #timepicker [interval]="3600" />
+      <mat-timepicker-toggle [for]="timepicker" matSuffix />
+      @if (form.controls.hour.invalid && form.controls.hour.dirty) {
+      <mat-error>
+        {{ getErrorMessage(form.controls.hour.errors) }}
+      </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea
+        matInput
+        placeholder="text..."
+        [formControl]="form.controls.description"
+      ></textarea>
+      @if (form.controls.description.invalid && form.controls.description.dirty)
+      {
+      <mat-error>
+        {{ getErrorMessage(form.controls.description.errors) }}
+      </mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="null">Cancel</button>
+    <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+  </mat-dialog-actions>
+</ng-container>

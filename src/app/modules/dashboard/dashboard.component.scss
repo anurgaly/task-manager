@@ -1,0 +1,18 @@
+.page {
+  width: 100%;
+
+  &-header {
+    height: 60px;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000;
+  }
+
+  &-content {
+    display: flex;
+    height: calc(100% - 60px);
+    padding: 16px;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,38 @@
+<div class="page">
+  <div class="page--content">
+    <h1>Hello!</h1>
+    <p>Please, enter your data</p>
+    <section class="page--content__data">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          [formControl]="form.controls.firstName"
+          placeholder="first name..."
+        />
+        @if (form.controls.firstName.dirty) {
+        <mat-error>
+          {{ getErrorMessage(form.controls.firstName.errors) }}
+        </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          [formControl]="form.controls.lastName"
+          placeholder="last name..."
+        />
+        @if (form.controls.lastName.dirty) {
+        <mat-error>
+          {{ getErrorMessage(form.controls.lastName.errors) }}
+        </mat-error>
+        }
+      </mat-form-field>
+    </section>
+    <section class="page--content--action">
+      <button mat-raised-button (click)="submit()">Submit</button>
+    </section>
+  </div>
+</div>

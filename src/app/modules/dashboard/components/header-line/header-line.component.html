@@ -1,0 +1,32 @@
+<div
+  class="header"
+  *ngIf="timeSettingsService.selectedDate | async as selectedDate"
+>
+  <div class="header__left-side">
+    <ng-container
+      *ngIf="timeSettingsService.selectedDate | async as selectedDate"
+    >
+      <button mat-raised-button (click)="createNewEvent(selectedDate)">
+        Create new event
+      </button>
+    </ng-container>
+
+    <button mat-raised-button (click)="setTodayDate()">Today</button>
+
+    <div class="header--switch">
+      <button mat-icon-button (click)="changeSelectedDate(selectedDate, -1)">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+      <button mat-icon-button (click)="changeSelectedDate(selectedDate, 1)">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+    </div>
+    <div class="header--date">
+      {{ selectedDate | date: "dd MMM YYYY" }}
+    </div>
+  </div>
+  <div class="header__right-side" *ngIf="$userInfo | async as userInfo">
+    <mat-icon>account_circle</mat-icon>
+    {{ userInfo.firstName + " " + userInfo.lastName }}
+  </div>
+</div>
